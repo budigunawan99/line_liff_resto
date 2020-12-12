@@ -15,7 +15,7 @@ $(".add").click(function () {
       })
 
       for (i in data_array) {
-            if (data_array[i].name == name && data_array[i].count < count) {
+            if (data_array[i].name === name && data_array[i].count < count) {
                   data_array.splice(i, 1);
                   continue;
             }
@@ -25,9 +25,9 @@ $(".add").click(function () {
       let total_harga = 0
       for (i in data_array) {
             data += '<tr>'
-            data += '<td>' + data_array[i].name + ' </td>'
-            data += '<td>x' + data_array[i].count + ' </td>'
-            data += '<td>' + data_array[i].price + ' </td>'
+            data += `<td>${data_array[i].name}</td>`
+            data += `<td>x ${data_array[i].count}</td>`
+            data += `<td>${data_array[i].price}</td>`
             data += '</tr>'
             total_harga += harga(data_array[i].price, data_array[i].count)
       }
@@ -54,7 +54,7 @@ $(".remove").click(function () {
       }
 
       for (i in data_array) {
-            if (data_array[i].name == name && data_array[i].count > count) {
+            if (data_array[i].name === name && data_array[i].count > count) {
                   data_array.splice(i, 1);
                   continue;
             }
@@ -65,9 +65,9 @@ $(".remove").click(function () {
       let total_harga = 0
       for (i in data_array) {
             data += '<tr>'
-            data += '<td>' + data_array[i].name + ' </td>'
-            data += '<td>x' + data_array[i].count + ' </td>'
-            data += '<td>' + data_array[i].price + ' </td>'
+            data += `<td>${data_array[i].name}</td>`
+            data += `<td>x ${data_array[i].count}</td>`
+            data += `<td>${data_array[i].price}</td>`
             data += '</tr>'
             total_harga += harga(data_array[i].price, data_array[i].count)
       }
@@ -151,7 +151,7 @@ $('#shareMessageButton').click(function () {
                                     });
                               } else {
                                     const [majorVer, minorVer] = (liff.getLineVersion() || "").split('.');
-                                    if (parseInt(majorVer) == 10 && parseInt(minorVer) < 11) {
+                                    if (parseInt(majorVer) === 10 && parseInt(minorVer) < 11) {
                                           M.toast({ html: `TargetPicker berhasil dibuka. Namun keberhasilan pengiriman tidak dapat dipastikan.` });
                                     } else {
                                           M.toast({ html: `TargetPicker ditutup!` });
