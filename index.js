@@ -85,11 +85,11 @@ function harga(price, count) {
 $('#sendMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-      name = ''
+      name = 'Customer'
 
       liff.getProfile()
             .then(profile => {
-                  name = profile.displayName
+                  // name = profile.displayName
                   console.log(name)
             })
             .catch((err) => {
