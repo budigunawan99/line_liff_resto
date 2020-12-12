@@ -65,7 +65,8 @@ main {
   text-align: left;
 }
 
-.btn-pesan {
+.btn-pesan,
+.btn-bagi-pesan{
   margin-top: 18px;
 }
 
