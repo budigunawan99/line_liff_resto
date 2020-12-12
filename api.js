@@ -75,9 +75,9 @@ function initializeApp() {
                   .then(profile => {
                         const name = profile.displayName
                         const avatar = profile.pictureUrl
-                        console.log(name)
+                        console.log(avatar)
                         $('span#client-name').html(name)
-                        $('#avatar').html(avatar)
+                        $('#avatar').attr('src',avatar);
                   })
                   .catch((err) => {
                         window.alert('Error: ' + err);
