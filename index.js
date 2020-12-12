@@ -1,7 +1,7 @@
 let data_array = [];
 
 $(".add").click(function () {
-      let name = $(this).parent().siblings('.name').html();      
+      let name = $(this).parent().siblings('.name').html();
       let price = $(this).data('price');
       let count = $(this).parent().siblings('.count').html();
 
@@ -85,15 +85,16 @@ function harga(price, count) {
 $('#sendMessageButton').click(function () {
       let data = ''
       let total_harga = 0
+      name = ''
 
       liff.getProfile()
-      .then(profile => {
-            this.name = profile.displayName
-            console.log(name)        
-      })
-      .catch((err) => {
-            this.name = 'Customer'
-      });
+            .then(profile => {
+                  name = profile.displayName
+                  console.log(name)
+            })
+            .catch((err) => {
+                  name = 'Customer'
+            });
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
@@ -129,12 +130,12 @@ $('#shareMessageButton').click(function () {
       let total_harga = 0
 
       liff.getProfile()
-      .then(profile => {
-            this.name += profile.displayName        
-      })
-      .catch((err) => {
-            this.name += 'Customer'
-      });
+            .then(profile => {
+                  this.name += profile.displayName
+            })
+            .catch((err) => {
+                  this.name += 'Customer'
+            });
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
@@ -152,16 +153,16 @@ $('#shareMessageButton').click(function () {
                         }
                   ])
                         .then(function (res) {
-                              if (res) {                                    
+                              if (res) {
                                     M.toast({ html: `<span>Pengiriman ${res.status}. Kami telah mengirimkan detail pesanan anda.</span><button id="close" class="btn-flat toast-action">Tutup</button>` });
                                     document.getElementById('close').addEventListener('click', function () {
                                           liff.closeWindow();
                                     });
                               } else {
                                     const [majorVer, minorVer] = (liff.getLineVersion() || "").split('.');
-                                    if (parseInt(majorVer) == 10 && parseInt(minorVer) < 11) {                                    
+                                    if (parseInt(majorVer) == 10 && parseInt(minorVer) < 11) {
                                           M.toast({ html: `TargetPicker berhasil dibuka. Namun keberhasilan pengiriman tidak dapat dipastikan.` });
-                                    } else {                                         
+                                    } else {
                                           M.toast({ html: `TargetPicker ditutup!` });
                                     }
                               }
