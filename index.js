@@ -85,15 +85,14 @@ function harga(price, count) {
 $('#sendMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-      let name = ''
 
       liff.getProfile()
       .then(profile => {
-            name += profile.displayName
+            this.name = profile.displayName
             console.log(name)        
       })
       .catch((err) => {
-            name += 'Customer'
+            this.name = 'Customer'
       });
 
       for (i in data_array) {
@@ -103,7 +102,7 @@ $('#sendMessageButton').click(function () {
 
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai ${name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${this.name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
             if (!liff.isInClient()) {
                   sendAlertIfNotInClient();
             } else {
@@ -128,14 +127,13 @@ $('#sendMessageButton').click(function () {
 $('#shareMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-      let name = ''
 
       liff.getProfile()
       .then(profile => {
-            name += profile.displayName        
+            this.name += profile.displayName        
       })
       .catch((err) => {
-            name += 'Customer'
+            this.name += 'Customer'
       });
 
       for (i in data_array) {
@@ -144,7 +142,7 @@ $('#shareMessageButton').click(function () {
       }
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai ${name},\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${this.name},\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
 
             if (liff.isApiAvailable('shareTargetPicker')) {
                   liff.shareTargetPicker([
