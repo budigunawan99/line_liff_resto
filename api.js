@@ -62,28 +62,34 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-        // check if the user is logged in/out, and disable inappropriate button
+      displayIsInClientInfo();
+      registerButtonHandlers();
+
+      // check if the user is logged in/out, and disable inappropriate button
       if (liff.isLoggedIn()) {
             $('#avatar').show();
             $('#client-name').show();
-            $('#liffLoginMessage').hide();
-            $('#liffLoginButton').hide();
-            $('#liffLogoutButton').show();
             $('#liffAppContent').show();
 
+            if (!liff.isInClient) {
+                  $('#liffLoginMessage').hide();
+                  $('#liffLoginButton').hide();
+                  $('#liffLogoutButton').show();
+            }
             // document.getElementById('liffLoginButton').disabled = true;
       } else {
             $('#avatar').hide();
             $('#client-name').hide();
-            $('#liffLoginMessage').show();
-            $('#liffLoginButton').show();
-            $('#liffLogoutButton').hide();
             $('#liffAppContent').hide();
+
+            if (!liff.isInClient) {
+                  $('#liffLoginMessage').show();
+                  $('#liffLoginButton').show();
+                  $('#liffLogoutButton').hide();
+            }
 
             // document.getElementById('liffLogoutButton').disabled = true;
       }
-      displayIsInClientInfo();
-      registerButtonHandlers();
 }
 
 /**
