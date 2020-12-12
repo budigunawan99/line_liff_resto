@@ -98,10 +98,17 @@ $('#sendMessageButton').click(function () {
             if (!liff.isInClient()) {
                   sendAlertIfNotInClient();
             } else {
-                  liff.sendMessages([{
-                        'type': 'text',
-                        'text': pesan
-                  }]).then(function () {
+                  liff.sendMessages([
+                        {
+                              'type': 'text',
+                              'text': pesan
+                        },
+                        {
+                              "type": "sticker",
+                              "packageId": "11538",
+                              "stickerId": "51626499"
+                        }
+                  ]).then(function () {
                         M.toast({ html: '<span>Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.</span><button id="close" class="btn-flat toast-action">Tutup</button>' });
                         document.getElementById('close').addEventListener('click', function () {
                               liff.closeWindow();
