@@ -91,11 +91,18 @@ img {
   display: none;
 }
 
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -155px;
+  padding-bottom: 155px;
+}
+
 footer {
   background-color: #c62828;
   color: #fff;
   border-radius: 25px;
-  padding: 5px 20px 20px 20px;
+  padding: 10px;
+  min-height: 155px;
 }
 
 @media (max-device-width: 600px) {
