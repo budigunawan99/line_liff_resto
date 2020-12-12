@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function () {
       const useNodeJS = false;   // if you are not using a node server, set this value to false
       const defaultLiffId = "1655315147-BGQGoQmx";   // change the default LIFF value if you are not using a node server
 
@@ -24,7 +24,7 @@ window.onload = function () {
             myLiffId = defaultLiffId;
             initializeLiffOrDie(myLiffId);
       }
-};
+});
 
 /**
 * Check if myLiffId is null. If null do not initiate liff.
