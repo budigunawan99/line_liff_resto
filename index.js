@@ -85,7 +85,7 @@ function harga(price, count) {
 }
 
 $('#sendMessageButton').click(function () {
-      pesan = "Hai Customer,<br>Terima Kasih telah memesan makanan."
+      pesan = "Hai Customer,\nTerima Kasih telah memesan makanan."
       if (!liff.isInClient()) {
             sendAlertIfNotInClient();
       } else {
