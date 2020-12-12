@@ -93,8 +93,8 @@ img {
 
 .wrapper {
   min-height: 100%;
-  margin-bottom: -155px;
-  padding-bottom: 155px;
+  margin-bottom: -80px;
+  padding-bottom: 80px;
 }
 
 footer {
@@ -102,7 +102,7 @@ footer {
   color: #fff;
   border-radius: 25px;
   padding: 10px;
-  min-height: 155px;
+  min-height: 80px;
 }
 
 @media (max-device-width: 600px) {
