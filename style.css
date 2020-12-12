@@ -68,27 +68,34 @@ main {
   margin-top: 18px;
 }
 
-.linking{
+.linking {
   display: block;
   margin-top: 10px;
 }
 
-img{
+img {
   border-radius: 50%;
   margin-top: 20px;
 }
 
-.buttonGroup{
+.buttonGroup {
   text-align: center;
 }
 
-#isInClientMessage{
+#isInClientMessage {
   font-style: italic;
   font-size: 14px;
 }
 
 .hidden {
   display: none;
+}
+
+footer {
+  background-color: #c62828;
+  color: #fff;
+  border-radius: 25px;
+  padding: 5px 20px 20px 20px;
 }
 
 @media (max-device-width: 600px) {
