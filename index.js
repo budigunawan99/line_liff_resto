@@ -94,7 +94,7 @@ $('#sendMessageButton').click(function () {
       }
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai Customer,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
             if (!liff.isInClient()) {
                   sendAlertIfNotInClient();
             } else {
@@ -109,6 +109,49 @@ $('#sendMessageButton').click(function () {
                   }).catch(function (error) {
                         M.toast({ html: `Error sending message: ${error}` });
                   });
+            }
+      } else {
+            M.toast({ html: `Mohon pesan terlebih dahulu kak!` });
+      }
+
+});
+
+$('#shareMessageButton').click(function () {
+      data = ''
+      total_harga = 0
+
+      for (i in data_array) {
+            data += `* ${data_array[i].count} ${data_array[i].name}\n`
+            total_harga += harga(data_array[i].price, data_array[i].count)
+      }
+      if (total_harga > 0) {
+            data += `* Total: ${total_harga}`
+            pesan = `Hai,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+
+            if (liff.isApiAvailable('shareTargetPicker')) {
+                  liff.shareTargetPicker([
+                        {
+                              'type': 'text',
+                              'text': pesan
+                        }
+                  ])
+                        .then(function (res) {
+                              if (res) {                                    
+                                    M.toast({ html: `<span>Pengiriman ${res.status}. Kami telah mengirimkan detail pesanan anda.</span><button id="close" class="btn-flat toast-action">Tutup</button>` });
+                                    document.getElementById('close').addEventListener('click', function () {
+                                          liff.closeWindow();
+                                    });
+                              } else {
+                                    const [majorVer, minorVer] = (liff.getLineVersion() || "").split('.');
+                                    if (parseInt(majorVer) == 10 && parseInt(minorVer) < 11) {                                    
+                                          M.toast({ html: `TargetPicker berhasil dibuka. Namun keberhasilan pengiriman tidak dapat dipastikan.` });
+                                    } else {                                         
+                                          M.toast({ html: `TargetPicker ditutup!` });
+                                    }
+                              }
+                        }).catch(function (error) {
+                              M.toast({ html: `Terjadi kesalahan` });
+                        })
             }
       } else {
             M.toast({ html: `Mohon pesan terlebih dahulu kak!` });
