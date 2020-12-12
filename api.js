@@ -75,13 +75,14 @@ function initializeApp() {
                   .then(profile => {
                         const name = profile.displayName
                         const avatar = profile.pictureUrl
+                        console.log(name)
                         $('#client-name').html(name)
                         $('#avatar').html(avatar)
                   })
                   .catch((err) => {
                         window.alert('Error: ' + err);
                   });
-                  
+
             if (!liff.isInClient()) {
                   $('#liffLoginMessage').hide();
                   $('#liffLoginButton').hide();
