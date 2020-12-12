@@ -1,4 +1,4 @@
-data_array = [];
+let data_array = [];
 
 $(".add").click(function () {
       let name = $(this).parent().siblings('.name').html();      
@@ -21,8 +21,8 @@ $(".add").click(function () {
             }
       }
 
-      data = ''
-      total_harga = 0
+      let data = ''
+      let total_harga = 0
       for (i in data_array) {
             data += '<tr>'
             data += '<td>' + data_array[i].name + ' </td>'
@@ -61,8 +61,8 @@ $(".remove").click(function () {
       }
 
       console.log(data_array)
-      data = ''
-      total_harga = 0
+      let data = ''
+      let total_harga = 0
       for (i in data_array) {
             data += '<tr>'
             data += '<td>' + data_array[i].name + ' </td>'
