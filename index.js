@@ -100,7 +100,7 @@ $('#sendMessageButton').click(function () {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
             total_harga += harga(data_array[i].price, data_array[i].count)
       }
-      console.log(name)
+      console.log(this.name)
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
             pesan = `Hai ${name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
