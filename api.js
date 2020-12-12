@@ -95,6 +95,7 @@ function displayIsInClientInfo() {
             document.getElementById('isInClientMessage').textContent = 'Diakses dari LINE';
       } else {
             document.getElementById('isInClientMessage').textContent = 'Diakses dari browser eksternal';
+            document.getElementById('openWindowButton').classList.toggle('hidden');
       }
 }
 
