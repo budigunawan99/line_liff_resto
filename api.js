@@ -69,6 +69,7 @@ function initializeApp() {
       if (liff.isLoggedIn()) {
             $('#avatar').show();
             $('#client-name').show();
+            $('#liffLoginMessage').hide();
             $('#liffLoginButton').hide();
             $('#liffLogoutButton').show();
             $('#liffAppContent').show();
@@ -77,6 +78,7 @@ function initializeApp() {
       } else {
             $('#avatar').hide();
             $('#client-name').hide();
+            $('#liffLoginMessage').show();
             $('#liffLoginButton').show();
             $('#liffLogoutButton').hide();
             $('#liffAppContent').hide();
@@ -90,6 +92,7 @@ function initializeApp() {
 */
 function displayIsInClientInfo() {
       if (liff.isInClient()) {
+            document.getElementById('liffLoginMessage').classList.toggle('hidden');
             document.getElementById('liffLoginButton').classList.toggle('hidden');
             document.getElementById('liffLogoutButton').classList.toggle('hidden');
             document.getElementById('isInClientMessage').textContent = 'Diakses dari LINE';
@@ -109,7 +112,7 @@ function registerButtonHandlers() {
 }
 
 function sendAlertIfNotInClient() {
-      alert('Mohon maaf aplikasi ini dibuka di browser eksternal.');
+      alert('Fitur ini hanya bisa diakses langsung via aplikasi LINE.');
 }
 
 document.getElementById('liffLoginButton').addEventListener('click', function () {
