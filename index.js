@@ -101,9 +101,9 @@ $('#sendMessageButton').click(function () {
                   'type': 'text',
                   'text': pesan
             }]).then(function () {
-                  window.alert('Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.');
+                  M.toast({ html: 'Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.' });
             }).catch(function (error) {
-                  window.alert('Error sending message: ' + error);
+                  M.toast({ html: `Error sending message: ${error}` });
             });
       }
 });

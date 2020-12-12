@@ -77,10 +77,10 @@ function initializeApp() {
                         const avatar = profile.pictureUrl
                         console.log(avatar)
                         $('span#client-name').html(name)
-                        $('#avatar').attr('src',avatar);
+                        $('#avatar').attr('src', avatar);
                   })
                   .catch((err) => {
-                        window.alert('Error: ' + err);
+                        M.toast({ html: `Error: ${err}` });
                   });
 
             if (!liff.isInClient()) {
@@ -132,7 +132,7 @@ function registerButtonHandlers() {
 }
 
 function sendAlertIfNotInClient() {
-      alert('Fitur ini hanya bisa diakses langsung via aplikasi LINE.');
+      M.toast({ html: 'Fitur ini hanya bisa diakses langsung via aplikasi LINE.' });
 }
 
 document.getElementById('liffLoginButton').addEventListener('click', function () {
