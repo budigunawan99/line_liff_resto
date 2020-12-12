@@ -1,10 +1,9 @@
 data_array = [];
 
 $(".add").click(function () {
-      name = $(this).parent().siblings('.name').html();
-      jenis = $(this).data('jenis');
-      price = $(this).data('price');
-      count = $(this).parent().siblings('.count').html();
+      let name = $(this).parent().siblings('.name').html();      
+      let price = $(this).data('price');
+      let count = $(this).parent().siblings('.count').html();
 
       count = parseInt(count) + 1
 
@@ -40,10 +39,9 @@ $(".add").click(function () {
 });
 
 $(".remove").click(function () {
-      name = $(this).parent().siblings('.name').html();
-      jenis = $(this).data('jenis');
-      price = $(this).data('price');
-      count = $(this).parent().siblings('.count').html();
+      let name = $(this).parent().siblings('.name').html();
+      let price = $(this).data('price');
+      let count = $(this).parent().siblings('.count').html();
 
       count = (parseInt(count) - 1 < 0) ? 0 : parseInt(count) - 1
 
@@ -85,16 +83,26 @@ function harga(price, count) {
 }
 
 $('#sendMessageButton').click(function () {
-      data = ''
-      total_harga = 0
+      let data = ''
+      let total_harga = 0
+      let name = 'Customer'
+
+      liff.getProfile()
+      .then(profile => {
+            name = profile.displayName        
+      })
+      .catch((err) => {
+            name = 'Customer'
+      });
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
             total_harga += harga(data_array[i].price, data_array[i].count)
       }
+
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
             if (!liff.isInClient()) {
                   sendAlertIfNotInClient();
             } else {
@@ -117,8 +125,17 @@ $('#sendMessageButton').click(function () {
 });
 
 $('#shareMessageButton').click(function () {
-      data = ''
-      total_harga = 0
+      let data = ''
+      let total_harga = 0
+      let name = 'Customer'
+
+      liff.getProfile()
+      .then(profile => {
+            name = profile.displayName        
+      })
+      .catch((err) => {
+            name = 'Customer'
+      });
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
@@ -126,7 +143,7 @@ $('#shareMessageButton').click(function () {
       }
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${name},\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
 
             if (liff.isApiAvailable('shareTargetPicker')) {
                   liff.shareTargetPicker([
