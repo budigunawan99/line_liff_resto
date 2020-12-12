@@ -71,6 +71,17 @@ function initializeApp() {
             $('#client-name').show();
             $('#liffAppContent').show();
 
+            liff.getProfile()
+                  .then(profile => {
+                        const name = profile.displayName
+                        const avatar = profile.pictureUrl
+                        $('#client-name').html(name)
+                        $('#avatar').html(avatar)
+                  })
+                  .catch((err) => {
+                        window.alert('Error: ' + err);
+                  });
+                  
             if (!liff.isInClient()) {
                   $('#liffLoginMessage').hide();
                   $('#liffLoginButton').hide();
@@ -135,4 +146,5 @@ document.getElementById('liffLogoutButton').addEventListener('click', function (
             window.location.reload();
       }
 });
+
 
