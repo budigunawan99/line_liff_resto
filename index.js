@@ -102,13 +102,17 @@ $('#sendMessageButton').click(function () {
                         'type': 'text',
                         'text': pesan
                   }]).then(function () {
-                        M.toast({ html: 'Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.' });
+                        M.toast({ html: '<span>Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.</span><button id="close" class="btn-flat toast-action">Tutup</button>' });
+                        document.getElementById('close').addEventListener('click', function () {
+                              liff.closeWindow();
+                        });
                   }).catch(function (error) {
                         M.toast({ html: `Error sending message: ${error}` });
                   });
             }
-      }else{
+      } else {
             M.toast({ html: `Mohon pesan terlebih dahulu kak!` });
       }
 
 });
+
