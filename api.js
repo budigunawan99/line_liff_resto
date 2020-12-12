@@ -71,7 +71,7 @@ function initializeApp() {
             $('#client-name').show();
             $('#liffAppContent').show();
 
-            if (!liff.isInClient) {
+            if (!liff.isInClient()) {
                   $('#liffLoginMessage').hide();
                   $('#liffLoginButton').hide();
                   $('#liffLogoutButton').show();
@@ -82,7 +82,7 @@ function initializeApp() {
             $('#client-name').hide();
             $('#liffAppContent').hide();
 
-            if (!liff.isInClient) {
+            if (!liff.isInClient()) {
                   $('#liffLoginMessage').show();
                   $('#liffLoginButton').show();
                   $('#liffLogoutButton').hide();
