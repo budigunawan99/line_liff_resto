@@ -82,7 +82,7 @@ img{
   text-align: center;
 }
 
-.isInClientMessage{
+#isInClientMessage{
   font-style: italic;
   font-size: 14px;
 }
