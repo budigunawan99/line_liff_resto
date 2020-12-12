@@ -102,7 +102,7 @@ $('#sendMessageButton').click(function () {
 
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai ${this.name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
             if (!liff.isInClient()) {
                   sendAlertIfNotInClient();
             } else {
@@ -142,7 +142,7 @@ $('#shareMessageButton').click(function () {
       }
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
-            pesan = `Hai ${this.name},\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            pesan = `Hai ${name},\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
 
             if (liff.isApiAvailable('shareTargetPicker')) {
                   liff.shareTargetPicker([
