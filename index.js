@@ -89,7 +89,8 @@ $('#sendMessageButton').click(function () {
 
       liff.getProfile()
       .then(profile => {
-            name = profile.displayName        
+            name = profile.displayName
+            console.log(name)        
       })
       .catch((err) => {
             name = 'Customer'
