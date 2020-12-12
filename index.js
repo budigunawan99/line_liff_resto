@@ -85,7 +85,15 @@ function harga(price, count) {
 }
 
 $('#sendMessageButton').click(function () {
-      pesan = "Hai Customer,\nTerima Kasih telah memesan makanan."
+      data = ''
+      total_harga = 0
+
+      for (i in data_array) {
+            data += `* ${data_array[i].count} ${data_array[i].name}\n`
+            total_harga += harga(data_array[i].price, data_array[i].count)
+      }
+      data += `* Total: ${total_harga}`
+      pesan = `Hai Customer,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
       if (!liff.isInClient()) {
             sendAlertIfNotInClient();
       } else {
@@ -93,7 +101,7 @@ $('#sendMessageButton').click(function () {
                   'type': 'text',
                   'text': pesan
             }]).then(function () {
-                  window.alert('Ini adalah pesan dari fitur Send Message');
+                  window.alert('Periksa inbox anda. Kami telah mengirimkan detail pesanan anda.');
             }).catch(function (error) {
                   window.alert('Error sending message: ' + error);
             });

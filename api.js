@@ -73,7 +73,7 @@ function initializeApp() {
             $('#liffLoginButton').hide();
             $('#liffLogoutButton').show();
             $('#liffAppContent').show();
-           
+
             // document.getElementById('liffLoginButton').disabled = true;
       } else {
             $('#avatar').hide();
@@ -82,7 +82,7 @@ function initializeApp() {
             $('#liffLoginButton').show();
             $('#liffLogoutButton').hide();
             $('#liffAppContent').hide();
-            
+
             // document.getElementById('liffLogoutButton').disabled = true;
       }
 }
@@ -92,11 +92,14 @@ function initializeApp() {
 */
 function displayIsInClientInfo() {
       if (liff.isInClient()) {
-            document.getElementById('liffLoginMessage').classList.toggle('hidden');
-            document.getElementById('liffLoginButton').classList.toggle('hidden');
-            document.getElementById('liffLogoutButton').classList.toggle('hidden');
+            $('#liffLoginMessage').hide();
+            $('#liffLoginButton').hide();
+            $('#liffLogoutButton').hide();
             document.getElementById('isInClientMessage').textContent = 'Diakses dari LINE';
       } else {
+            $('#liffLoginMessage').show();
+            $('#liffLoginButton').show();
+            $('#liffLogoutButton').show();
             document.getElementById('isInClientMessage').textContent = 'Diakses dari browser eksternal';
             document.getElementById('openWindowButton').classList.toggle('hidden');
       }
