@@ -85,21 +85,13 @@ function harga(price, count) {
 $('#sendMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-
-      let name = liff.getProfile()
-                  .then(profile => {
-                        let nm = profile.displayName
-                        return nm
-                  })
-                  .catch((err) => {
-                        name = 'Customer'
-                  });
+      let name = $('#client-name').html()
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
             total_harga += harga(data_array[i].price, data_array[i].count)
       }
-      console.log(name)
+
       if (total_harga > 0) {
             data += `* Total: ${total_harga}`
             pesan = `Hai ${name}!,\n\nTerima kasih telah memesan menu,\nberikut adalah review pesanannya:\n\n${data}\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
@@ -127,14 +119,7 @@ $('#sendMessageButton').click(function () {
 $('#shareMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-
-      liff.getProfile()
-            .then(profile => {
-                  this.name += profile.displayName
-            })
-            .catch((err) => {
-                  this.name += 'Customer'
-            });
+      let name = $('#client-name').html()
 
       for (i in data_array) {
             data += `* ${data_array[i].count} ${data_array[i].name}\n`
