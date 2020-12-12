@@ -108,4 +108,7 @@ footer .material-icons{
   header h2 {
     font-size: 36px;
   }
+  #liffLoginMessage img{
+    width: 80px;
+  }
 }
