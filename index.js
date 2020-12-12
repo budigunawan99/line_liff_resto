@@ -128,14 +128,14 @@ $('#sendMessageButton').click(function () {
 $('#shareMessageButton').click(function () {
       let data = ''
       let total_harga = 0
-      let name = 'Customer'
+      let name = ''
 
       liff.getProfile()
       .then(profile => {
-            name = profile.displayName        
+            name += profile.displayName        
       })
       .catch((err) => {
-            name = 'Customer'
+            name += 'Customer'
       });
 
       for (i in data_array) {
