@@ -62,10 +62,7 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
-      displayIsInClientInfo();
-      registerButtonHandlers();
-
-      // check if the user is logged in/out, and disable inappropriate button
+        // check if the user is logged in/out, and disable inappropriate button
       if (liff.isLoggedIn()) {
             $('#avatar').show();
             $('#client-name').show();
@@ -85,6 +82,8 @@ function initializeApp() {
 
             // document.getElementById('liffLogoutButton').disabled = true;
       }
+      displayIsInClientInfo();
+      registerButtonHandlers();
 }
 
 /**
